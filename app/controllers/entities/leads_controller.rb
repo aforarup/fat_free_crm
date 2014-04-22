@@ -62,9 +62,10 @@ class LeadsController < EntitiesController
   def create
     get_campaigns
     @comment_body = params[:comment_body]
-    puts "-."*80
+    puts "PARAMS AS RECD. BY THE CONTROLLER -".to_s
+    puts ("-."*80).to_s
     puts params.inspect
-    puts "-."*80
+    puts ("-."*80).to_s
     respond_with(@lead) do |format|
       if @lead.save_with_permissions(params)
         @lead.add_comment_by_user(@comment_body, current_user)
