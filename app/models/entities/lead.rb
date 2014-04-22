@@ -93,6 +93,11 @@ class Lead < ActiveRecord::Base
       save_with_model_permissions(Campaign.find(self.campaign_id))
     else
       self.attributes = params[:leads]
+      puts "="*80
+      puts params[:leads].inspect
+      puts "-"*80
+      puts self.attributes.inspect
+      puts "="*80
       save
     end
   end
