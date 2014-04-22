@@ -87,6 +87,7 @@ class Lead < ActiveRecord::Base
   # Save the lead along with its permissions.
   #----------------------------------------------------------------------------
   def save_with_permissions(params)
+    puts params.inspect
     self.campaign = Campaign.find(params[:campaign]) unless params[:campaign].blank?
     if params[:lead][:access] == "Campaign" && self.campaign # Copy campaign permissions.
       save_with_model_permissions(Campaign.find(self.campaign_id))
