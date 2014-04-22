@@ -90,15 +90,15 @@ class Lead < ActiveRecord::Base
     puts params.inspect
     self.campaign = Campaign.find(params[:campaign]) unless params[:campaign].blank?
     if params[:lead][:access] == "Campaign" && self.campaign # Copy campaign permissions.
-      puts "-."*80
+      puts ("-."*80).to_s
       save_with_model_permissions(Campaign.find(self.campaign_id))
     else
       self.attributes = params[:leads]
-      puts "="*80
+      puts ("="*80).to_s
       puts params[:leads].inspect
-      puts "-"*80
+      puts ("="*80).to_s
       puts self.attributes.inspect
-      puts "="*80
+      puts ("="*80).to_s
       save
     end
   end
